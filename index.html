@@ -7,202 +7,259 @@
     <meta name="author" content="Joshua Fieldhouse">
     <meta name="keywords" content="Microsoft clone">
     <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <script defer src="controller.js"></script>
     <title>Microsoft Homepage | Clone Practice</title>
 </head>
 <body>
-    <div class="container">
-        <nav>
-            <img alt="Microsoft" src="https://i.ibb.co/wwLhz98/logo.png" class="logo">
-            <ul class="main-nav">
-                <li><a href="#">Microsoft 365</a></li>
-                <li><a href="#">Office</a></li>
-                <li><a href="#">Windows</a></li>
-                <li><a href="#">Surface</a></li>
-                <li><a href="#">Xbox</a></li>
-                <li><a href="#">Deals</a></li>
-                <li><a href="#">Support</a></li>
-                <li id="more_dropdown"><a href=#>More</a></li>
-                <li id="all_microsoft"><a href="#">All Microsoft</a></li>
-            </ul>
-            <div class="nav-icons-right">
-                <a href="#"><img src="images/search.svg" alt="Search"></a>
-                <a href="#"><img src="images/shopping-cart.svg" alt="Trolley"></a>
-                <a href="#"><img src="images/sign-in.svg" alt="Account"></a>
+    <div class="dialog">
+        <dialog class="manage-cookies">
+            <button type="button" class="close-dialog">X</button>
+            <h3>Manage Cookie Preferences</h3>
+            <div>
+                <p>Most Microsoft websites use cookies. Cookies are small text files placed on your device to store data so web servers can use it later. Microsoft and our third-party partners use cookies to remember your preferences and settings, help you log in, show you personalised ads and analyse how well our websites are working. For more info, see the Cookies and similar technologies section of the <a href="#">Privacy Statement</a>.</p>
+                
+                <h4>Required</h4>
+                <p>We use required cookies to perform essential website functions. For example, they’re used to log you in, save your language preferences, provide a shopping basket experience, improve performance, route traffic between web servers, detect the size of your screen, determine page load times, improve user experience and for audience measurement. These cookies are necessary for our websites to work.</p>
+                
+                <fieldset>
+                    <h4>Analytics</h4>
+                    <p>We allow third parties to use analytics cookies to understand how you use our websites so we can make them better and the third parties can develop and improve their products, which they may use on websites that are not owned or operated by Microsoft. For example, they’re used to gather information about the pages you visit and how many clicks you need to accomplish a task. We use some analytics cookies for advertising.</p>
+                    <input type="radio" id="an-accept" value="an-accept" name="analytics"/>
+                    <label for="an-accept">Accept</label>
+                    <input type="radio" id="an-reject" value="an-reject" name="analytics"/>
+                    <label for="an-reject">Reject</label>
+                </fieldset>
+                <fieldset>
+                    <h4>Social Media</h4>
+                    <p>We and third parties use social media cookies to show you ads and content based on your social media profiles and activity on our websites. They’re used to connect your activity on our websites to your social media profiles so the ads and content you see on our websites and on social media will better reflect your interests.</p>
+                    <input type="radio" id="sm-accept" value="sm-accept" name="socialmedia"/>
+                    <label for="sm-accept">Accept</label>
+                    <input type="radio" id="sm-reject" value="sm-reject" name="socialmedia"/>
+                    <label for="sm-reject">Reject</label>
+                </fieldset>
+                <fieldset>
+                    <h4>Advertising</h4>
+                    <p>We and third parties use advertising cookies to show you new ads by recording which ads you’ve already seen. They're also used to track which ads you click on or purchases you make after clicking on an ad for payment purposes, and to show you ads that are more relevant to you. For example, they’re used to detect when you click on an ad and show you ads based on your social media interests and website browsing history.</p>
+                    <input type="radio" id="ad-accept" value="ad-accept" name="advertising"/>
+                    <label for="ad-accept">Accept</label>
+                    <input type="radio" id="ad-reject" value="ad-reject" name="advertising"/>
+                    <label for="ad-reject">Reject</label>
+                </fieldset>
             </div>
-        </nav>
+            <div>
+                <button type="button">Reset All</button>
+                <button type="button">Save changes</button>
+            </div>
+        </dialog>
     </div>
-    <div class="container">
-        <section class="showcase">
-            <h2>Microsoft Store Sustainability</h2>
-            <p>Explore Microsoft's commitment to sustainability including, our products that use eco-friendly materials and information on how you can make a more environmentally informed purchase</p>
-            <div class="btn">
-                <a>
-                    <span>Discover more</span>
-                    <img src="images/right-arrow.svg" alt="Proceed">
-                </a>
+    <div class="cookies-banner">
+        <div class="cookies-content">
+            <div>
+                <img src="images/information.png" alt="information icon" />
+                <p>We use optional cookies to improve your experience on our websites, such as through social media connections, and to display personalised advertising based on your online activity. If you reject optional cookies, only cookies necessary to provide you the services will be used. You may change your selection by clicking 'Manage Cookies' at the bottom of the page. <a href="#">Privacy Statement Third-Party Cookies</a></p>
             </div>
-        </section>
+            <div>
+                <button type="button" id="accept">Accept</button>
+                <button type="button" id="reject">Reject</button>
+                <button type="button" id="manage">Manage cookies</button>
+            </div>
+        </div>
     </div>
-    <div class="container">
-        <section class="linkcards">
-            <div class="card">
-                <a href="#">
-                    <img src="/images/windows.svg" alt="Windows logo">
-                    <h3>Choose your Microsoft 365</h3>
-                </a>
-            </div>
-            <div class="card">
-                <a href="#">
-                    <img src="/images/tablet.svg" alt="Tablet icon">
-                    <h3>Shop for Surface devices</h3>
-                </a>
-            </div>
-            <div class="card">
-                <a href="#">
-                    <img src="/images/xbox.svg" alt="Xbox logo">
-                    <h3>Buy Xbox games and consoles</h3>
-                </a>
-            </div>
-            <div class="card">
-                <a href="#">
-                    <img src="/images/windows.svg" alt="Windows logo">
-                    <h3>Get Windows 11</h3>
-                </a>
-            </div>
-            <div class="card">
-                <a href="#">
-                    <img src="/images/laptop.svg" alt="Laptop icon">
-                    <h3>Find your next PC</h3>
-                </a>
-            </div>
-            <div class="card">
-                <a href="#">
-                    <img src="/images/briefcase.svg" alt="Briefcase icon">
-                    <h3>Shop Business</h3>
-                </a>
-            </div>
-        </section>
-    </div>
-    <div class="container">
-        <section class="image-cards">
-            <div class="imgcard">
-                <img src="/images/card1.png" alt="">
-                <h2>Surface Laptop 4</h2>
-                <p>
-                    Do it all with a perfect balance of sleek, ultra-thin design, multitasking speed and improved performance.
-                </p>
-                <a href="#">
-                    <span>Shop now</span>
-                    <img class= imgcardarrow src="images/right-arrow.svg" alt="Proceed">
-                </a>
-            </div>
-            <div class="imgcard">
-                <img src="/images/card2.png" alt="">
-                <h2>Microsoft 365</h2>
-                <p>
-                    Premium Office apps, extra cloud storage, advanced security, and more - all in one convenient subscription.
-                </p>
-                <a href="#">
-                    <span>For up to 6 people</span>
-                    <img class= imgcardarrow src="images/right-arrow.svg" alt="Proceed">
-                </a>
-                <a href="#">
-                    <span>For 1 person</span>
-                    <img class= imgcardarrow src="images/right-arrow.svg" alt="Proceed">
-                </a>
-            </div>
-            <div class="imgcard">
-                <img src="/images/card3.png" alt="">
-                <h2>Xbox Series S</h2>
-                <p>
-                    Next-gen performance in the smallest Xbox ever.
-                </p>
-                <a href="#">
-                    <span>Shop now</span>
-                    <img class= imgcardarrow src="images/right-arrow.svg" alt="Proceed">
-                </a>
-            </div>
-            <div class="imgcard">
-                <img src="/images/card4.png" alt="">
-                <h2>PC Game Pass</h2>
-                <p>
-                    Unlock 100+ great games and EA Play, plus get your first month for $1. Offer available to new subscribers only.
-                </p>
-                <a href="#">
-                    <span>Join now</span>
-                    <img class= imgcardarrow src="images/right-arrow.svg" alt="Proceed">
-                </a>
-            </div>
-        </section>
-    </div>
-    <div class="container">
-        <section class="showcase-two">
-            <h2>Xbox controllers</h2>
-            <p>Elite, wireless, adaptive - find the controller that fits your style of play</p>
-            <div class="btn">
-                <a>
-                    <span>Shop now</span>
-                    <img src="images/right-arrow.svg" alt="Proceed">
-                </a>
-            </div>
-        </section>
-    </div>
-    <div class="container">
-        <h2 id="businessheader">For business</h2>
-        <section class="image-cards">
-            <div class="imgcard">
-                <img src="/images/card5.png" alt="">
-                <span class="newicon">New</span>
-                <h2>Surface Pro 8 for Business</h2>
-                <p>
-                    Get unprecedented levels of performance and versatility on a 13-inch screen. Available with Windows 11.
-                </p>
-                <a href="#">
-                    <span>Shop now</span>
-                    <img class= imgcardarrow src="images/right-arrow.svg" alt="Proceed">
-                </a>
-            </div>
-            <div class="imgcard">
-                <img src="/images/card6.png" alt="">
-                <h2>Get Microsoft Teams for free</h2>
-                <p>
-                    Online meetings, chat and shared cloud storage - all in one place.
-                </p>
-                <a href="#">
-                    <span>Sign up for free</span>
-                    <img class= imgcardarrow src="images/right-arrow.svg" alt="Proceed">
-                </a>
-            </div>
-            <div class="imgcard">
-                <img src="/images/card7.png" alt="">
-                <h2>Microsoft 365 for business</h2>
-                <p>
-                    Stay a step ahead with powerful apps for productivity, connection and security.
-                </p>
-                <a href="#">
-                    <span>Shop now</span>
-                    <img class= imgcardarrow src="images/right-arrow.svg" alt="Proceed">
-                </a>
-            </div>
-            <div class="imgcard">
-                <img src="/images/card8.png" alt="">
-                <h2>Windows 11 for business is here</h2>
-                <p>
-                    Designed for hybrid work. Powerful for employees. Consistent for IT. Secure for all.
-                </p>
-                <a href="#">
-                    <span>Learn more</span>
-                    <img class= imgcardarrow src="images/right-arrow.svg" alt="Proceed">
-                </a>
-            </div>
-        </section>
-        <section class="socialarea">
-            <h4>Follow Microsoft</h4>
-            <a href="#"><img src="/images/facebook.svg" alt="Facebook" class="social-icon" /></a>
-            <a href="#"><img src="/images/twitter.svg" alt="Twitter" class="social-icon" /></a>
-            <a href="#"><img src="/images/youtube.svg" alt="Youtube" class="social-icon" /></a>
-            <a href="#"><img src="/images/instagram.svg" alt="Instagram" class="social-icon" /></a>
-        </section>
+    <div class="body-container">
+        <div class="container">
+            <nav>
+                <img alt="Microsoft" src="https://i.ibb.co/wwLhz98/logo.png" class="logo">
+                <ul class="main-nav">
+                    <li><a href="#">Microsoft 365</a></li>
+                    <li><a href="#">Office</a></li>
+                    <li><a href="#">Windows</a></li>
+                    <li><a href="#">Surface</a></li>
+                    <li><a href="#">Xbox</a></li>
+                    <li><a href="#">Deals</a></li>
+                    <li><a href="#">Support</a></li>
+                    <li id="more_dropdown"><a href=#>More</a></li>
+                    <li id="all_microsoft"><a href="#">All Microsoft</a></li>
+                </ul>
+                <div class="nav-icons-right">
+                    <a href="#"><img src="images/search.svg" alt="Search"></a>
+                    <a href="#"><img src="images/shopping-cart.svg" alt="Trolley"></a>
+                    <a href="#"><img src="images/sign-in.svg" alt="Account"></a>
+                </div>
+            </nav>
+        </div>
+        <div class="container">
+            <section class="showcase">
+                <h2>Microsoft Store Sustainability</h2>
+                <p>Explore Microsoft's commitment to sustainability including, our products that use eco-friendly materials and information on how you can make a more environmentally informed purchase</p>
+                <div class="btn">
+                    <a>
+                        <span>Discover more</span>
+                        <img src="images/right-arrow.svg" alt="Proceed">
+                    </a>
+                </div>
+            </section>
+        </div>
+        <div class="container">
+            <section class="linkcards">
+                <div class="card">
+                    <a href="#">
+                        <img src="/images/windows.svg" alt="Windows logo">
+                        <h3>Choose your Microsoft 365</h3>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="#">
+                        <img src="/images/tablet.svg" alt="Tablet icon">
+                        <h3>Shop for Surface devices</h3>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="#">
+                        <img src="/images/xbox.svg" alt="Xbox logo">
+                        <h3>Buy Xbox games and consoles</h3>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="#">
+                        <img src="/images/windows.svg" alt="Windows logo">
+                        <h3>Get Windows 11</h3>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="#">
+                        <img src="/images/laptop.svg" alt="Laptop icon">
+                        <h3>Find your next PC</h3>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="#">
+                        <img src="/images/briefcase.svg" alt="Briefcase icon">
+                        <h3>Shop Business</h3>
+                    </a>
+                </div>
+            </section>
+        </div>
+        <div class="container">
+            <section class="image-cards">
+                <div class="imgcard">
+                    <img src="/images/card1.png" alt="">
+                    <h2>Surface Laptop 4</h2>
+                    <p>
+                        Do it all with a perfect balance of sleek, ultra-thin design, multitasking speed and improved performance.
+                    </p>
+                    <a href="#">
+                        <span>Shop now</span>
+                        <img class= imgcardarrow src="images/right-arrow.svg" alt="Proceed">
+                    </a>
+                </div>
+                <div class="imgcard">
+                    <img src="/images/card2.png" alt="">
+                    <h2>Microsoft 365</h2>
+                    <p>
+                        Premium Office apps, extra cloud storage, advanced security, and more - all in one convenient subscription.
+                    </p>
+                    <a href="#">
+                        <span>For up to 6 people</span>
+                        <img class= imgcardarrow src="images/right-arrow.svg" alt="Proceed">
+                    </a>
+                    <a href="#">
+                        <span>For 1 person</span>
+                        <img class= imgcardarrow src="images/right-arrow.svg" alt="Proceed">
+                    </a>
+                </div>
+                <div class="imgcard">
+                    <img src="/images/card3.png" alt="">
+                    <h2>Xbox Series S</h2>
+                    <p>
+                        Next-gen performance in the smallest Xbox ever.
+                    </p>
+                    <a href="#">
+                        <span>Shop now</span>
+                        <img class= imgcardarrow src="images/right-arrow.svg" alt="Proceed">
+                    </a>
+                </div>
+                <div class="imgcard">
+                    <img src="/images/card4.png" alt="">
+                    <h2>PC Game Pass</h2>
+                    <p>
+                        Unlock 100+ great games and EA Play, plus get your first month for $1. Offer available to new subscribers only.
+                    </p>
+                    <a href="#">
+                        <span>Join now</span>
+                        <img class= imgcardarrow src="images/right-arrow.svg" alt="Proceed">
+                    </a>
+                </div>
+            </section>
+        </div>
+        <div class="container">
+            <section class="showcase-two">
+                <h2>Xbox controllers</h2>
+                <p>Elite, wireless, adaptive - find the controller that fits your style of play</p>
+                <div class="btn">
+                    <a>
+                        <span>Shop now</span>
+                        <img src="images/right-arrow.svg" alt="Proceed">
+                    </a>
+                </div>
+            </section>
+        </div>
+        <div class="container">
+            <h2 id="businessheader">For business</h2>
+            <section class="image-cards">
+                <div class="imgcard">
+                    <img src="/images/card5.png" alt="">
+                    <span class="newicon">New</span>
+                    <h2>Surface Pro 8 for Business</h2>
+                    <p>
+                        Get unprecedented levels of performance and versatility on a 13-inch screen. Available with Windows 11.
+                    </p>
+                    <a href="#">
+                        <span>Shop now</span>
+                        <img class= imgcardarrow src="images/right-arrow.svg" alt="Proceed">
+                    </a>
+                </div>
+                <div class="imgcard">
+                    <img src="/images/card6.png" alt="">
+                    <h2>Get Microsoft Teams for free</h2>
+                    <p>
+                        Online meetings, chat and shared cloud storage - all in one place.
+                    </p>
+                    <a href="#">
+                        <span>Sign up for free</span>
+                        <img class= imgcardarrow src="images/right-arrow.svg" alt="Proceed">
+                    </a>
+                </div>
+                <div class="imgcard">
+                    <img src="/images/card7.png" alt="">
+                    <h2>Microsoft 365 for business</h2>
+                    <p>
+                        Stay a step ahead with powerful apps for productivity, connection and security.
+                    </p>
+                    <a href="#">
+                        <span>Shop now</span>
+                        <img class= imgcardarrow src="images/right-arrow.svg" alt="Proceed">
+                    </a>
+                </div>
+                <div class="imgcard">
+                    <img src="/images/card8.png" alt="">
+                    <h2>Windows 11 for business is here</h2>
+                    <p>
+                        Designed for hybrid work. Powerful for employees. Consistent for IT. Secure for all.
+                    </p>
+                    <a href="#">
+                        <span>Learn more</span>
+                        <img class= imgcardarrow src="images/right-arrow.svg" alt="Proceed">
+                    </a>
+                </div>
+            </section>
+            <section class="socialarea">
+                <h4>Follow Microsoft</h4>
+                <a href="#"><img src="/images/facebook.svg" alt="Facebook" class="social-icon" /></a>
+                <a href="#"><img src="/images/twitter.svg" alt="Twitter" class="social-icon" /></a>
+                <a href="#"><img src="/images/youtube.svg" alt="Youtube" class="social-icon" /></a>
+                <a href="#"><img src="/images/instagram.svg" alt="Instagram" class="social-icon" /></a>
+            </section>
+        </div>
     </div>
 <footer>
     <div class="container">

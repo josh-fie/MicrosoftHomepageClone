@@ -16,11 +16,143 @@ body {
 
 /* Global Elements */
 
-.container {
+.body-container {
     width: 90%;
     max-width: 1175px;
     margin: 0 auto;
     padding: 0;
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+}
+
+/* Cookies Banner */
+
+.cookies-banner {
+    width: 100%;
+    background-color: rgba(211, 211, 211, 0.25);
+    margin: 0 auto;
+    font-size: 13px;
+}
+
+.cookies-content {
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    padding: 5px 0;
+}
+
+.cookies-content div {
+    display: flex;
+}
+
+.cookies-content img {
+    width: 25px;
+    height: 25px;
+    filter: opacity(80%);
+    margin: 12px;
+}
+
+.cookies-content > div > p {
+    width: 88%;
+}
+
+.cookies-content div:nth-of-type(2) {
+    justify-content: space-around;
+    flex-basis: 40%;
+    flex-wrap: nowrap;
+    padding: 0 10px;
+}
+
+.cookies-content button {
+    margin: 0 5px;
+    width: 150px;
+    padding: 10px;
+    border: none;
+    background-color: #EBEBEB;
+    font-size: 14px;
+}
+
+.cookies-content button:hover {
+    cursor: pointer;
+    box-shadow: -.5px 4px 7px 2px rgba(0, 0, 0, .2), inset 0 0 0 50px rgba(104, 103, 103, 0.1);
+}
+
+/* Dialog and Background Div Overlay */
+
+dialog::backdrop {
+    background-color: white;
+    opacity: 50%;
+}
+
+dialog[open] {
+    position: fixed;
+    top: 60px;
+    display: flex;
+    flex-direction: column;
+    width: 650px;
+    margin: auto;
+    padding: 40px 40px;
+    border: 1px solid blue;
+    font-size: 1rem;
+    height: 700px;
+}
+
+dialog .close-dialog {
+    display: block;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    padding: 10px;
+    border: none;
+    background: none;
+}
+
+dialog .close-dialog:hover {
+    cursor: pointer;
+}
+
+.manage-cookies div:first-of-type {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+}
+
+.manage-cookies div:last-of-type {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.manage-cookies div:last-of-type button {
+    flex-basis: 49%;
+    padding: 8px;
+    border: none;
+    margin-top: 20px;
+    background-color: lightgray;
+}
+
+.manage-cookies div:last-of-type button:disabled {
+    opacity: 90%;
+    cursor: not-allowed;
+}
+
+dialog fieldset {
+    border: none;
+}
+
+dialog fieldset input:checked {
+    border: 5px solid black;
+}
+
+dialog h4 {
+    margin-top: 25px;
 }
 
 /* Navigation */
