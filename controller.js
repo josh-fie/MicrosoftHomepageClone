@@ -10,6 +10,7 @@ const allCookiesButtons = cookiesBanner.querySelectorAll("button");
 const dialogBox = document.querySelector(".manage-cookies");
 const closeDialogX = document.querySelector(".close-dialog");
 const allDialogButtons = dialogBox.querySelectorAll("button");
+const cookiesInputs = document.querySelector(".cookies-inputs");
 
 
 
@@ -25,6 +26,43 @@ const displayBanner = function(el) {
         el.style.display = "block";
         console.log("Cookies Banner Displayed")
     }, 5000);
+}
+
+const checkCookieInputs = function() {
+    const inputArray = [...cookiesInputs.getElementsByTagName("input")];
+    
+    return inputArray.some((input, i, arr) => input.checked === true);
+}
+
+const resetCookieInputs = function() {
+    const inputArray = [...cookiesInputs.getElementsByTagName("input")];
+
+    inputArray.forEach(input => input.checked = false);
+    console.log(inputArray);
+}
+
+const disableDialogButtons = function() {
+    // Disable Reset and Dave Buttons in Dialog
+
+    const dialogButtons = Array.from(allDialogButtons);
+    dialogButtons.shift();
+
+    dialogButtons.forEach((btn) => {
+        console.log(btn);
+        btn.disabled = "true";
+    });
+}
+
+const enableDialogButtons = function() {
+    const dialogButtons = Array.from(allDialogButtons);
+    dialogButtons.shift();
+
+    dialogButtons.forEach((btn, i, arr) => {
+        console.log(btn);
+        btn.disabled = "false";
+        btn.removeAttribute("disabled");
+    
+    });
 }
 
 // Display Cookies Banner
@@ -57,31 +95,55 @@ lastButton[0].addEventListener('click', function(e) {
     const clicked = e.target;
     console.log(clicked);
 
+     if(!checkCookieInputs()) {
+
+        disableDialogButtons();
+
+    }
+
+    // Open Dialog
     dialogBox.showModal();
-
-    // Disable Reset and Dave Buttons in Dialog
-
-    const dialogButtons = Array.from(allDialogButtons);
-    dialogButtons.shift();
-
-    dialogButtons.forEach((btn) => {
-        console.log(btn);
-        btn.disabled = "true";
-    });
 
 })
 
 // Enable Dialog Buttons
-// HTMLInputElementObject.addEventListener('input', (evt) => {
-//     console.log('run'); // Do something
-//   });
 
-// or 'change' event on input may work. There is a difference between property vs attribute. May need to look into.
+cookiesInputs.addEventListener('click', function(e) {
+    const clicked = e.target;
+
+    if(!clicked.id) return;
+
+    console.log(clicked.id);
+
+    if(clicked.id) {
+        enableDialogButtons();
+    }
+
+})
+
+// Reset All Dialog Button Handler
+
+allDialogButtons[1].addEventListener('click', function(e) {
+    const clicked = e.target;
+    console.log(clicked);
+    // if(clicked.disabled === "false");
+    resetCookieInputs();
+    disableDialogButtons();
+})
+
+// Save Changes Dialog Button Handler
+
+allDialogButtons[2].addEventListener('click', function(e) {
+    dialogBox.close();
+    closeDisplay(cookiesBanner);
+});
 
 //Close Dialog Handler
 
 closeDialogX.addEventListener('click', () => {
     dialogBox.close();
+
+    console.log(cookiesInputs.getElementsByTagName("input"));
 })
 
 
