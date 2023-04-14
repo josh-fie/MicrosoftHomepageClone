@@ -12,6 +12,9 @@ const closeDialogX = document.querySelector(".close-dialog");
 const allDialogButtons = dialogBox.querySelectorAll("button");
 const cookiesInputs = document.querySelector(".cookies-inputs");
 
+// All Microsoft Dropdown
+const allMicrosoft = document.querySelector("#all_microsoft");
+
 
 
 // Reusable Functions
@@ -144,6 +147,28 @@ closeDialogX.addEventListener('click', () => {
     dialogBox.close();
 
     console.log(cookiesInputs.getElementsByTagName("input"));
+})
+
+// All Microsoft Dropdown Handler
+
+allMicrosoft.addEventListener('click', (e) => {
+    const clicked = e.target;
+
+    const button = clicked.closest("#all_microsoft");
+    console.log(button);
+
+    // Highlight active dropdown button
+
+    button.firstElementChild.classList.add("clicked");
+
+    // Display Dropdown Menu w/ transition
+
+    const dropdownMenu = button.querySelector(".all_micro_content");
+
+    setTimeout(() => {
+        dropdownMenu.style.opacity = 1;
+        dropdownMenu.style.top = "30px";
+    }, 100);
 })
 
 
