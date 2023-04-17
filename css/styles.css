@@ -181,7 +181,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     height: 55px;
-    padding: 18px 0px;
+    /* padding: 18px 0px; */
     font-size: 13px;
 }
 
@@ -196,6 +196,8 @@ nav ul {
     display: flex;
     flex: 1;
     padding-left: 10px;
+    height: 100%;
+    align-items: center;
 }
 
 nav ul li {
@@ -204,7 +206,7 @@ nav ul li {
 
 nav ul li:last-of-type {
     margin-left: auto;
-    padding-right: 30px;
+    /* padding-right: 30px; */
 }
 
 nav ul li a {
@@ -220,24 +222,38 @@ nav ul li a:hover {
 
 nav #all_microsoft {
     position: relative;
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    height: 100%;
     cursor: pointer;
 }
 
-nav #all_microsoft:hover a:first-of-type, .clicked {
+nav #all_microsoft:hover a:first-of-type {
     border-bottom: 2px solid rgb(36, 35, 35);
     padding-bottom: 3px;
 }
 
-/* nav #all_microsoft:hover .all_micro_content{
-    display: block;
-} */
+.clicked {
+    border: 1px dashed black;
+    background-color: rgba(240, 240, 240);
+}
 
 nav #all_microsoft .all_micro_content > div {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: flex-start;
+}
+
+nav #all_microsoft > a {
+    padding-bottom: 3px;
+    padding-right: 5px;
+    height: 20px;
+}
+
+nav #all_microsoft > img {
+    width: 10px;
+    transform: rotate(270deg);
 }
 
 .all_micro_content {
@@ -653,7 +669,7 @@ footer .language-copyright ul a:first-child li {
     }
 }
 
-@media (max-width: 950px) {
+@media (max-width: 1000px) {
     body {
         background-color: blue;
     }
@@ -688,7 +704,7 @@ footer .language-copyright ul a:first-child li {
     }
 }
 
-@media (max-width: 910px) {
+@media (max-width: 940px) {
     body {
         background-color: orange;
     }
@@ -728,7 +744,7 @@ footer .language-copyright ul a:first-child li {
     }
 }
 
-@media (max-width: 870px) {
+@media (max-width: 880px) {
     body {
         background-color: lightblue;
     }

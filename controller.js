@@ -2,6 +2,9 @@
 
 // Selected Elements
 
+// Body
+const body = document.querySelector("body");
+
 // Cookies Banner
 const cookiesBanner = document.querySelector(".cookies-banner");
 const allCookiesButtons = cookiesBanner.querySelectorAll("button");
@@ -66,6 +69,15 @@ const enableDialogButtons = function() {
         btn.removeAttribute("disabled");
     
     });
+}
+
+const closeDropdown = function(dropdownel, btn) {
+    dropdownel.style.opacity = 0;
+        setTimeout(() => {
+            dropdownel.style.top = "-1000px";
+        }, 200);
+
+        btn.classList.remove("clicked");
 }
 
 // Display Cookies Banner
@@ -157,18 +169,43 @@ allMicrosoft.addEventListener('click', (e) => {
     const button = clicked.closest("#all_microsoft");
     console.log(button);
 
-    // Highlight active dropdown button
-
-    button.firstElementChild.classList.add("clicked");
-
-    // Display Dropdown Menu w/ transition
+    // Select Dropdown
 
     const dropdownMenu = button.querySelector(".all_micro_content");
 
+    if ([...button.classList].includes("clicked")) {
+
+        closeDropdown(dropdownMenu, button);
+    } else {
+
+    button.classList.add("clicked");
+
+    // Display Dropdown Menu w/ transition
+
     setTimeout(() => {
         dropdownMenu.style.opacity = 1;
-        dropdownMenu.style.top = "30px";
+        dropdownMenu.style.top = "50px";
     }, 100);
+    }
+});
+
+// Close Dialog on Body Click
+
+body.addEventListener("click", function(e) {
+    const clicked = e.target;
+
+    const inMenu = clicked.closest("#all_microsoft") ? true : false;
+
+    
+
+    if(inMenu) return console.log("In Menu"); //guard clause
+
+    if(!inMenu) {
+        console.log("Not in Menu")
+        const button = document.querySelector("#all_microsoft");
+        const dropdownMenu = document.querySelector(".all_micro_content");
+        closeDropdown(dropdownMenu, button);
+    };
 })
 
 
