@@ -21,6 +21,12 @@ const allMicrosoft = document.querySelector("#all_microsoft");
 // More Dropdown
 const moreButton = document.querySelector("#more_dropdown");
 
+// Main Nav Items
+const mainNav = document.querySelector(".main-nav");
+const allMicroContent = document.querySelector(".all_micro_content");
+const columnContainer = document.getElementById("column-container");
+const hamburgerButton = document.getElementById("hamburger_icon");
+
 
 
 // Reusable Functions
@@ -75,13 +81,87 @@ const enableDialogButtons = function() {
 }
 
 const closeDropdown = function(dropdownel, btn) {
-    dropdownel.style.opacity = 0;
         setTimeout(() => {
-            dropdownel.style.top = "-1000px";
-        }, 200);
+            dropdownel.style.display = "none";
+        }, 100);
 
         btn.classList.remove("clicked");
 }
+
+// Window Resize to Tablet (<880px)
+
+const mmObj = window.matchMedia("(max-width: 900px)");
+
+// Hamburger Dropdown Handler
+
+hamburgerButton.addEventListener('click', function(e) {
+    const clicked = e.target;
+    if(clicked.checked) {
+        mainNav.style.display = "flex";
+    } else {
+        mainNav.style.display = "none";
+    }
+})
+
+// Create a match Function
+function tabletDomChange(x) {
+
+    if (x.matches && (mainNav.children.length === 9)) {
+    
+        const elCollection = Array.from(columnContainer.children);
+
+        elCollection.forEach( (col, i, arr) => {
+            const colLineItems = Array.from(col.children);
+            const widerDivElement = document.createElement("div");
+            mainNav.append(widerDivElement);
+
+            colLineItems.forEach( el => {
+                if(el.nodeName === "LI") {
+                const divElement = document.createElement("div");
+                divElement.classList.add(`inner-div-${i}`);
+                const textElement = document.createTextNode(`${el.textContent}`)
+                const imgElement =document.createElement("img");
+                imgElement.src = "/images/left-arrow.svg";
+                widerDivElement.append(textElement);
+                widerDivElement.append(imgElement);
+                widerDivElement.append(divElement);
+                } else { 
+                    const div = document.querySelector(`.inner-div-${i}`);
+                    const liElement = document.createElement("li");
+                    const textElement = document.createTextNode(`${el.textContent}`)
+                    liElement.append(textElement);
+                    div.append(liElement);
+                }
+            })
+        })
+
+        // Generate View Sitemap Line in Dropdown
+        
+        const smLiElement = document.createElement("li");
+        const aElement = document.createElement("a");
+        aElement.href = "#";
+        const textElement = document.createTextNode("View Sitemap");
+        aElement.append(textElement);
+        smLiElement.append(aElement);
+        mainNav.append(smLiElement);
+
+    } else if (!x.matches && mainNav.children.length > 9){
+        // Remove Generated Elements from DOM as page width increases
+    const mainNavContents = Array.from(mainNav.children);
+    mainNavContents.forEach((el, i, arr) => {
+        if(i > 8) el.remove();
+    })
+    // Remove Manually Set display and checked status on hamburger
+    mainNav.removeAttribute("style");
+    hamburgerButton.checked = false;
+    } else {console.log("Not tablet size")}
+}
+
+// Initial Call on Tablet Size width Check:
+tabletDomChange(mmObj);
+
+// Event Listener for Window Width Change (Changes applied at Tablet Width)
+mmObj.addEventListener("change", tabletDomChange);
 
 // Display Cookies Banner
 
@@ -186,8 +266,9 @@ allMicrosoft.addEventListener('click', (e) => {
     // Display Dropdown Menu w/ transition
 
     setTimeout(() => {
-        dropdownMenu.style.opacity = 1;
-        dropdownMenu.style.top = "50px";
+        dropdownMenu.style.display = "block";
+        // dropdownMenu.style.opacity = 1;
+        // dropdownMenu.style.top = "50px";
     }, 100);
     }
 });
@@ -236,13 +317,13 @@ moreButton.addEventListener('click', function(e) {
 
         button.classList.remove("clicked");
     } else {
-            if(window.innerWidth > 940 && window.innerWidth <= 1000) {setTimeout(() => {dropdownList[0].style.display = "flex";
+            if(window.innerWidth > 955 && window.innerWidth <= 1000) {setTimeout(() => {dropdownList[0].style.display = "flex";
             button.classList.add("clicked");});
         }
-            if(window.innerWidth < 940 && window.innerWidth >= 880) {setTimeout(() => {dropdownList[1].style.display = "flex";
+            if(window.innerWidth < 955 && window.innerWidth >= 900) {setTimeout(() => {dropdownList[1].style.display = "flex";
             button.classList.add("clicked");})
         }
-            if(window.innerWidth < 880) console.log("Tablet size: no dropdown");
+            if(window.innerWidth < 900) console.log("Tablet size: no dropdown");
     };
 });
 

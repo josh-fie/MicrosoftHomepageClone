@@ -185,6 +185,10 @@ nav {
     font-size: 13px;
 }
 
+.hamburger_button {
+    display: none;
+}
+
 nav img[src*="https"] {
     margin-left: 10px;
     padding-right: 10px;
@@ -257,7 +261,8 @@ nav #all_microsoft > img, #more_dropdown > img {
 }
 
 .all_micro_content {
-    display: block;
+    /* display: block; */
+    display: none;
     position: absolute;
     background-color:rgba(240, 240, 240);
     border: 1px solid rgba(225, 225, 225, 0.8);
@@ -265,10 +270,10 @@ nav #all_microsoft > img, #more_dropdown > img {
     width: 94vw;
     margin: 0 auto;
     box-sizing: border-box;
-    /* top: 30px; */
-    top: -1000px;
+    top: 50px;
+    /* top: -1000px; */
     right: -180px;
-    opacity: 0;
+    /* opacity: 0; */
     transition: opacity .2s;
 
 }
@@ -691,11 +696,10 @@ footer .language-copyright ul a:first-child li {
         padding: 30px 0;
     }
 
-    body {
-        background-color: blue;
-    }
-
     /* Nav More Dropdown */
+    nav .main-nav {
+        display: flex;
+    }
 
     nav .main-nav li:nth-of-type(6), nav .main-nav li:nth-of-type(7) {
         display: none;
@@ -706,12 +710,13 @@ footer .language-copyright ul a:first-child li {
     }
 }
 
-@media (max-width: 940px) {
-    body {
-        background-color: orange;
-    }
+@media (max-width: 955px) {
 
     /* Nav More Dropdown */
+
+    nav .main-nav {
+        display: flex;
+    }
 
     nav .main-nav li:nth-of-type(5), nav .main-nav li:nth-of-type(6), nav .main-nav li:nth-of-type(7) {
         display: none;
@@ -722,12 +727,116 @@ footer .language-copyright ul a:first-child li {
     }
 }
 
-@media (max-width: 880px) {
-    body {
-        background-color: lightblue;
+@media (max-width: 900px) {
+
+    .body-container, .container:nth-of-type(1) {
+        width: 100%;
+    }
+
+    nav {
+        position: relative;
+    }
+
+    nav .nav-icons-right {
+        display: flex;
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    nav .nav-icons-right a:first-of-type {
+        margin-right: auto;
+    }
+
+    nav .main-nav li:nth-of-type(5), nav .main-nav li:nth-of-type(6), nav .main-nav li:nth-of-type(7) {
+        display: list-item;
+    }
+
+    .hamburger_button{
+        display: block;
+        /* position: absolute; */
+        padding: 1px;
+        top: 0;
+        left: 0;
+        width: 50px;
+        height: 100%;
+    }
+
+    .hamburger_button > input {
+        border: 1px dashed black;
+        width: 100%;
+        height: 100%;
+        opacity: 25%;
+    }
+
+    nav img[src*="https"] {
+        position: absolute;
+        margin: 0 40vw;
+        padding: 0;
+    }
+
+    nav ul.main-nav {
+        list-style-type: none;
+        position: absolute;
+        top: 55px;
+        /* display: flex; */
+        display: none;
+        flex-direction: column;
+        flex: 1;
+        padding-left: unset;
+        height: unset;
+        width: 100%;
+        align-items: flex-start;
+        background-color:rgba(240, 240, 240);
+        border: 1px solid rgba(225, 225, 225, 0.8);
+        border-bottom: 2px solid black;
+        font-size: 1rem;
+    }
+
+    nav ul li, .main-nav div {
+        padding: 1rem 15px;
+        border-bottom: 1px solid rgba(225, 225, 225, 0.8);
+        width: 100%;
+    }
+
+    .main-nav img {
+    width: 10px;
+    transform: rotate(270deg);
+    }
+
+    .main-nav > div {
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+    }
+
+    .main-nav div .go-to-sitemap {
+        border-bottom: 1px solid rgba(225, 225, 225, 0.8);
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 0;
+    }
+
+    .main-nav div div {
+        opacity: 0%;
+        position: absolute;
     }
 
     nav #more_dropdown {
-        display: flex;
+        display: none;
+    }
+
+    nav #all_microsoft {
+        display: none;
+    }
+
+    nav ul li:hover, .main-nav div:hover {
+        cursor: pointer;
+    }
+
+    nav ul li a:hover {
+        border-bottom: unset;
+        padding-bottom: unset;
+        color: unset;
     }
 }
