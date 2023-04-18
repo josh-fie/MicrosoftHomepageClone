@@ -18,6 +18,9 @@ const cookiesInputs = document.querySelector(".cookies-inputs");
 // All Microsoft Dropdown
 const allMicrosoft = document.querySelector("#all_microsoft");
 
+// More Dropdown
+const moreButton = document.querySelector("#more_dropdown");
+
 
 
 // Reusable Functions
@@ -194,19 +197,54 @@ allMicrosoft.addEventListener('click', (e) => {
 body.addEventListener("click", function(e) {
     const clicked = e.target;
 
-    const inMenu = clicked.closest("#all_microsoft") ? true : false;
+    const inAllMicroMenu = clicked.closest("#all_microsoft") ? true : false;
+    const inMoreMenu = clicked.closest("#more_dropdown") ? true : false;
 
-    
-
-    if(inMenu) return console.log("In Menu"); //guard clause
-
-    if(!inMenu) {
-        console.log("Not in Menu")
+    if(!inAllMicroMenu || inMoreMenu) {
         const button = document.querySelector("#all_microsoft");
         const dropdownMenu = document.querySelector(".all_micro_content");
         closeDropdown(dropdownMenu, button);
     };
+
+    if(!inMoreMenu || inAllMicroMenu) {
+        const button = document.querySelector("#more_dropdown");
+        const dropdownList = button.querySelectorAll(".more_div");
+
+        // Remove Display for dropdown
+
+        dropdownList.forEach(el => el.style.display = "none");
+
+        button.classList.remove("clicked");
+    };
 })
+
+// More Dropdown Handler
+
+moreButton.addEventListener('click', function(e) {
+    const clicked = e.target;
+
+    const button = clicked.closest("#more_dropdown");
+    const dropdownList = button.querySelectorAll(".more_div");
+
+    if ([...button.classList].includes("clicked")) {
+
+        // Remove Display for dropdown
+
+        dropdownList.forEach(el => el.style.display = "none");
+
+        // Remove clicked class for More button
+
+        button.classList.remove("clicked");
+    } else {
+            if(window.innerWidth > 940 && window.innerWidth <= 1000) {setTimeout(() => {dropdownList[0].style.display = "flex";
+            button.classList.add("clicked");});
+        }
+            if(window.innerWidth < 940 && window.innerWidth >= 880) {setTimeout(() => {dropdownList[1].style.display = "flex";
+            button.classList.add("clicked");})
+        }
+            if(window.innerWidth < 880) console.log("Tablet size: no dropdown");
+    };
+});
 
 
 //Building a Slider Component Parts 1 and 2

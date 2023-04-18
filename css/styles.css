@@ -220,7 +220,7 @@ nav ul li a:hover {
     color:rgb(36, 35, 35);
 }
 
-nav #all_microsoft {
+nav #all_microsoft, nav #more_dropdown {
     position: relative;
     display: flex;
     align-items: center;
@@ -228,7 +228,7 @@ nav #all_microsoft {
     cursor: pointer;
 }
 
-nav #all_microsoft:hover a:first-of-type {
+nav #all_microsoft:hover a:first-of-type, nav #more_dropdown:hover a:first-of-type {
     border-bottom: 2px solid rgb(36, 35, 35);
     padding-bottom: 3px;
 }
@@ -245,13 +245,13 @@ nav #all_microsoft .all_micro_content > div {
     align-items: flex-start;
 }
 
-nav #all_microsoft > a {
+nav #all_microsoft > a , nav #more_dropdown > a{
     padding-bottom: 3px;
     padding-right: 5px;
     height: 20px;
 }
 
-nav #all_microsoft > img {
+nav #all_microsoft > img, #more_dropdown > img {
     width: 10px;
     transform: rotate(270deg);
 }
@@ -309,10 +309,6 @@ nav #all_microsoft > img {
     font-size: .5rem;
 }
 
-nav #more_dropdown {
-    display: none;
-}
-
 /* Nav Right Icons */
 
 nav div .nav-icons-right {
@@ -325,9 +321,36 @@ nav div .nav-icons-right {
     margin: 0 10px;
 }
 
-/*.nav-icons-right a img {
-    transform: scaleX(-1);
-}*/
+/* Nav More Dropdown */
+
+nav #more_dropdown {
+    position: relative;
+    display: none;
+}
+
+nav .more_div {
+    position: absolute;
+    top: 50px;
+    left: -1px;
+    flex-direction: column;
+    background-color:rgba(240, 240, 240);
+    border: 1px solid rgba(225, 225, 225, 0.8);
+    border-bottom: 2px solid black;
+    width: 300%;
+    padding: 0 20px;
+}
+
+nav .more_div div {
+    padding: 20px 0;
+}
+
+.more_div.more_1 {
+    display: none;
+}
+
+.more_div.more_2 {
+    display: none;
+}
 
 /* Showcase */
 
@@ -667,40 +690,19 @@ footer .language-copyright ul a:first-child li {
         grid-template-columns: repeat(3, 1fr);
         padding: 30px 0;
     }
-}
 
-@media (max-width: 1000px) {
     body {
         background-color: blue;
     }
 
-    nav .main-nav {
-        display: relative;
-    }
+    /* Nav More Dropdown */
 
-    nav .main-nav li:nth-of-type(5)~ li {
-        position: absolute;
-    
-    }
-
-    nav .main-nav li:nth-of-type(6) {
-        top: 70px;
-        left: 520px;
-    }
-
-    nav .main-nav li:nth-of-type(7) {
-        top: 110px;
-        left: 520px;
+    nav .main-nav li:nth-of-type(6), nav .main-nav li:nth-of-type(7) {
+        display: none;
     }
 
     nav #more_dropdown {
-        display: inline-flex;
-        position: static;
-    }
-
-    nav #all_microsoft {
-        display: inline-flex;
-        position: static;
+        display: flex;
     }
 }
 
@@ -709,38 +711,14 @@ footer .language-copyright ul a:first-child li {
         background-color: orange;
     }
 
-    nav .main-nav {
-        display: relative;
-    }
+    /* Nav More Dropdown */
 
-    nav .main-nav li:nth-of-type(4)~ li {
-        position: absolute;
-    
-    }
-
-    nav .main-nav li:nth-of-type(5) {
-        top: 70px;
-        left: 470px;
-    }
-
-    nav .main-nav li:nth-of-type(6) {
-        top: 110px;
-        left: 470px;
-    }
-
-    nav .main-nav li:nth-of-type(7) {
-        top: 150px;
-        left: 470px;
+    nav .main-nav li:nth-of-type(5), nav .main-nav li:nth-of-type(6), nav .main-nav li:nth-of-type(7) {
+        display: none;
     }
 
     nav #more_dropdown {
-        display: inline-flex;
-        position: static;
-    }
-
-    nav #all_microsoft {
-        display: inline-flex;
-        position: static;
+        display: flex;
     }
 }
 
@@ -749,42 +727,7 @@ footer .language-copyright ul a:first-child li {
         background-color: lightblue;
     }
 
-    nav .main-nav {
-        display: relative;
-    }
-
-    nav .main-nav li:nth-of-type(3)~ li {
-        position: absolute;
-    
-    }
-
-    nav .main-nav li:nth-of-type(4) {
-        top: 70px;
-        left: 410px;
-    }
-
-    nav .main-nav li:nth-of-type(5) {
-        top: 110px;
-        left: 410px;
-    }
-
-    nav .main-nav li:nth-of-type(6) {
-        top: 150px;
-        left: 410px;
-    }
-
-    nav .main-nav li:nth-of-type(7) {
-        top: 190px;
-        left: 410px;
-    }
-
     nav #more_dropdown {
-        display: inline-flex;
-        position: static;
-    }
-
-    nav #all_microsoft {
-        display: inline-flex;
-        position: static;
+        display: flex;
     }
 }
