@@ -88,6 +88,22 @@ const closeDropdown = function(dropdownel, btn) {
         btn.classList.remove("clicked");
 }
 
+const closeNestedDropdowns = function() {
+    // Close all nested dropdowns
+    const dropdownDivs = mainNav.querySelectorAll("div");
+
+    dropdownDivs.forEach( function(div) {
+        const classPresent = div.classList.contains("dropdownShow") ? true : false;
+        
+        if(classPresent) {
+            div.classList.remove("dropdownShow");
+            div.style.display = "none";
+            // Rotate arrows back
+            div.previousElementSibling.style.transform = "rotate(-90deg)";
+        }
+    })
+}
+
 // Window Resize to Tablet (<880px)
 
 const mmObj = window.matchMedia("(max-width: 900px)");
@@ -100,7 +116,35 @@ hamburgerButton.addEventListener('click', function(e) {
         mainNav.style.display = "flex";
     } else {
         mainNav.style.display = "none";
+
+        closeNestedDropdowns();
     }
+});
+
+// Hamburger Dropdown Handler for nested dropdowns
+mainNav.addEventListener('click', function(e) {
+    let clicked = e.target;
+
+    // Guard Clause for LI's
+    if(clicked.nodeName === "LI") return console.log("li");
+
+    if(clicked.closest(".outer-div")) {
+    clicked = clicked.closest(".outer-div");
+    const arrow = clicked.querySelector("img");
+
+    const childDiv = clicked.lastElementChild;
+    
+        if(!childDiv.classList.contains("dropdownShow")) {
+            arrow.style.transform = "rotate(90deg)";
+            childDiv.classList.add("dropdownShow");
+            childDiv.style.display = "block";
+        } else {
+            arrow.style.transform = "rotate(-90deg)";
+            childDiv.classList.remove("dropdownShow")
+            childDiv.style.display = "none";
+        }
+    
+    } else return;
 })
 
 // Create a match Function
@@ -113,6 +157,7 @@ function tabletDomChange(x) {
         elCollection.forEach( (col, i, arr) => {
             const colLineItems = Array.from(col.children);
             const widerDivElement = document.createElement("div");
+            widerDivElement.classList.add(`outer-div`);
             mainNav.append(widerDivElement);
 
             colLineItems.forEach( el => {
@@ -280,6 +325,18 @@ body.addEventListener("click", function(e) {
 
     const inAllMicroMenu = clicked.closest("#all_microsoft") ? true : false;
     const inMoreMenu = clicked.closest("#more_dropdown") ? true : false;
+
+    // Tablet outside of mainNav Dropdown
+    const inMainNav = clicked.closest(".main-nav") ? true : false;
+
+    if(hamburgerButton.checked === true && !inMainNav && clicked != hamburgerButton) {
+        console.log("outside dropdown mainNav and menu open")
+        mainNav.style.display = "none";
+        hamburgerButton.checked = false;
+        
+        // close nested dropdowns
+        closeNestedDropdowns();
+    };
 
     if(!inAllMicroMenu || inMoreMenu) {
         const button = document.querySelector("#all_microsoft");
