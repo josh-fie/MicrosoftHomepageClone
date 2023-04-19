@@ -189,6 +189,64 @@ nav {
     display: none;
 }
 
+.search_return_btn {
+    height: 90%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 1px;
+    margin-left: 2px;
+    width: 50px;
+    /* display: flex; */
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+}
+
+.search_return_btn:hover {
+    background-color: yellow;
+    cursor: pointer;
+}
+
+.search_return_btn img {
+    width: 35%;
+    
+}
+
+.search_bar {
+    /* display: flex; */
+    display: none;
+    border: 1px solid grey;
+    position: absolute;
+    left: 50px;
+    right: 10px;
+    height: 40px;
+    z-index: 10;
+
+}
+
+.search_bar input {
+    width: 100%;
+    border: none;
+}
+
+.search_bar #search_submit {
+    width: 40px;
+    border: none;
+    background: none;
+}
+
+.search_bar #search_submit:focus {
+    border: 2px solid blue;
+}
+
+.search_bar #search_submit img {
+    width: 25px;
+    /* margin: 0 10px; */
+    display: inline-block;
+}
+
 nav img[src*="https"] {
     margin-left: 10px;
     padding-right: 10px;

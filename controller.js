@@ -26,6 +26,9 @@ const mainNav = document.querySelector(".main-nav");
 const allMicroContent = document.querySelector(".all_micro_content");
 const columnContainer = document.getElementById("column-container");
 const hamburgerButton = document.getElementById("hamburger_icon");
+const searchBtn = document.getElementById("search_btn");
+const searchReturnBtn = document.querySelector(".search_return_btn");
+const searchBar = document.querySelector(".search_bar");
 
 
 
@@ -104,9 +107,15 @@ const closeNestedDropdowns = function() {
     })
 }
 
-// Window Resize to Tablet (<880px)
+searchBtn.addEventListener('click', function(e) {
+    console.log(e.target);
 
-const mmObj = window.matchMedia("(max-width: 900px)");
+    searchBtn.style.opacity = "0";
+    searchReturnBtn.style.display = "flex";
+    searchBar.style.display = "flex";
+
+    // toggle class applied instead of above???
+})
 
 // Hamburger Dropdown Handler
 
@@ -146,6 +155,10 @@ mainNav.addEventListener('click', function(e) {
     
     } else return;
 })
+
+// Window Resize to Tablet (<880px)
+
+const mmObj = window.matchMedia("(max-width: 900px)");
 
 // Create a match Function
 function tabletDomChange(x) {

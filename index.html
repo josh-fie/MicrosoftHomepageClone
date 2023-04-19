@@ -68,11 +68,19 @@
     <div class="body-container">
         <div class="container">
             <nav>
+                <div class="search_return_btn">
+                    <img alt="Cancel Search" src="/images/big-left-arrow.svg" />
+                </div>
+                <div class="search_bar">
+                    <button id="search_submit" type="submit">
+                        <img src="images/search.svg" alt="Search">
+                    </button>
+                    <input type="search" placeholder="Search Microsoft.com" />
+                </div>
                 <div class="hamburger_button">
                     <input type="checkbox" id="hamburger_icon"/>
-                    <!-- style="display: none;" -->
                     <div class="hamburger-line-container">
-                        <div></div>
+                        <div></div> <!-- Generated Hamburger Icon -->
                     </div>
                 </div>
                 <img alt="Microsoft" src="https://i.ibb.co/wwLhz98/logo.png" class="logo">
@@ -173,7 +181,7 @@
                     </li>
                 </ul>
                 <div class="nav-icons-right">
-                    <a href="#"><img src="images/search.svg" alt="Search"></a>
+                    <a href="#" id="search_btn"><img src="images/search.svg" alt="Search"></a>
                     <a href="#"><img src="images/shopping-cart.svg" alt="Trolley"></a>
                     <a href="#"><img src="images/sign-in.svg" alt="Account"></a>
                 </div>
