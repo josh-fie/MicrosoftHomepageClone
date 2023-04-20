@@ -178,6 +178,7 @@ dialog h4 {
 
 nav {
     display: flex;
+    position: relative;
     justify-content: space-between;
     align-items: center;
     height: 55px;
@@ -189,20 +190,40 @@ nav {
     display: none;
 }
 
+/* Search Functionality For Larger Screen */
+
 .search_return_btn {
-    height: 90%;
+    height: 70%;
     position: absolute;
-    top: 0;
-    left: 0;
-    padding: 1px;
-    margin-left: 2px;
-    width: 50px;
+    border: 1px solid black;
+    top: unset;
+    right: 10px;
+    width: 75px;
     /* display: flex; */
     display: none;
     align-items: center;
     justify-content: center;
     z-index: 5;
 }
+
+.search_bar {
+    /* display: flex; */
+    display: none;
+    flex-direction: row-reverse;
+    border: 1px solid grey;
+    position: absolute;
+    right: 100px;;
+    left: 140px;
+    height: 40px;
+    z-index: 10;
+
+}
+
+.search_bar input {
+    padding-left: 10px;
+}
+
+/* Remains Across all Sizes for Search */
 
 .search_return_btn:hover {
     /* background-color: yellow; */
@@ -212,6 +233,7 @@ nav {
 /* Activated Class */
 .search_return_btn.activated, .search_bar.activated {
     display: flex;
+    background-color: white;
 }
 
 #search_btn.activated {
@@ -227,25 +249,13 @@ nav {
     
 }
 
-.search_bar {
-    /* display: flex; */
-    display: none;
-    border: 1px solid grey;
-    position: absolute;
-    left: 50px;
-    right: 10px;
-    height: 40px;
-    z-index: 10;
-
-}
-
 .search_bar input {
     width: 100%;
     border: none;
 }
 
 .search_bar input::placeholder {
-    font-size: 1rem;
+    font-size: inherit;
 }
 
 .search_bar input:focus-visible, .search_bar input:focus {
@@ -993,5 +1003,40 @@ footer .language-copyright ul a:first-child li {
         border-bottom: unset;
         padding-bottom: unset;
         color: unset;
+    }
+
+    /* Search Functionality */
+
+    .search_bar {
+        /* display: flex; */
+        display: none;
+        flex-direction: row;
+        border: 1px solid grey;
+        position: absolute;
+        left: 50px;
+        right: 10px;
+        height: 40px;
+        z-index: 10;
+    
+    }
+
+    .search_return_btn {
+        height: 90%;
+        position: absolute;
+        border: none;
+        top: 0;
+        left: 0;
+        padding: 1px;
+        margin-left: 2px;
+        width: 50px;
+        /* display: flex; */
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 5;
+    }
+
+    .search_bar input::placeholder {
+        font-size: 1rem;
     }
 }

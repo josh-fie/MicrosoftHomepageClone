@@ -187,6 +187,15 @@ const mmObj = window.matchMedia("(max-width: 900px)");
 // Create a match Function
 function tabletDomChange(x) {
 
+    // Change SearchReturnButton From Cancel to Arrow
+    if (x.matches) {
+        searchReturnBtn.querySelector("img").style.display = "block";
+        searchReturnBtn.querySelector("span").style.display = "none";
+    } else {
+        searchReturnBtn.querySelector("span").style.display = "inline-block";
+        searchReturnBtn.querySelector("img").style.display = "none";
+    }
+
     if (x.matches && (mainNav.children.length === 9)) {
     
         const elCollection = Array.from(columnContainer.children);
@@ -236,7 +245,9 @@ function tabletDomChange(x) {
     // Remove Manually Set display and checked status on hamburger
     mainNav.removeAttribute("style");
     hamburgerButton.checked = false;
-    } else {console.log("Not tablet size")}
+    } else {
+        console.log("Not tablet size");
+    }
 }
 
 // Initial Call on Tablet Size width Check:
@@ -360,8 +371,12 @@ allMicrosoft.addEventListener('click', (e) => {
 window.addEventListener('keydown', (event) => {
     if (document.activeElement === searchInput && event.key === "Tab") {
       searchBar.style.border = "1px solid grey";
+   } else if (searchBar.classList.contains("activated") && event.key === "Escape") {
+    toggleSearch();
    } else return;
- });
+
+//    Above only if escape key pressed when search bar active will search bar toggle off.
+});
 
 // Close Dialog on Body Click
 
