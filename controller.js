@@ -26,9 +26,13 @@ const mainNav = document.querySelector(".main-nav");
 const allMicroContent = document.querySelector(".all_micro_content");
 const columnContainer = document.getElementById("column-container");
 const hamburgerButton = document.getElementById("hamburger_icon");
+const hamburgerUnit = document.querySelector(".hamburger_button");
+
+// Search
 const searchBtn = document.getElementById("search_btn");
 const searchReturnBtn = document.querySelector(".search_return_btn");
 const searchBar = document.querySelector(".search_bar");
+const searchInput = document.getElementById("search_input");
 
 
 
@@ -107,14 +111,34 @@ const closeNestedDropdowns = function() {
     })
 }
 
+const toggleSearch = function() {
+    searchBtn.classList.toggle("activated");
+    searchReturnBtn.classList.toggle("activated");
+    searchBar.classList.toggle("activated");
+    hamburgerUnit.classList.toggle("activated");
+}
+
+// End of Reusable Functions
+
 searchBtn.addEventListener('click', function(e) {
-    console.log(e.target);
+    toggleSearch();
 
-    searchBtn.style.opacity = "0";
-    searchReturnBtn.style.display = "flex";
-    searchBar.style.display = "flex";
+    // Make Hamburger Menu inaccessible as part of toggleSearch
 
-    // toggle class applied instead of above???
+    // Make Input Focused element with focus()
+    searchInput.focus();
+
+    // When input active element add border to searchBar
+    document.activeElement === searchInput ? searchBar.style.border = "2px solid blue" : searchBar.style.border = "1px solid grey";
+})
+
+// Close Search Bar Via Return Btn
+
+searchReturnBtn.addEventListener('click', function(e) {
+    toggleSearch();
+
+    // Remove blue border from Search
+    searchBar.style.border = "none";
 })
 
 // Hamburger Dropdown Handler
@@ -331,9 +355,21 @@ allMicrosoft.addEventListener('click', (e) => {
     }
 });
 
+// Remove Search Bar Focus on Tab Keypress
+
+window.addEventListener('keydown', (event) => {
+    if (document.activeElement === searchInput && event.key === "Tab") {
+      searchBar.style.border = "1px solid grey";
+   } else return;
+ });
+
 // Close Dialog on Body Click
 
 body.addEventListener("click", function(e) {
+
+    // When input active element add border to searchBar, otherwise standard border
+    document.activeElement === searchInput ? searchBar.style.border = "2px solid blue" : searchBar.style.border = "1px solid grey";
+
     const clicked = e.target;
 
     const inAllMicroMenu = clicked.closest("#all_microsoft") ? true : false;

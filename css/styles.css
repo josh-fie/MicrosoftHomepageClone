@@ -205,8 +205,21 @@ nav {
 }
 
 .search_return_btn:hover {
-    background-color: yellow;
+    /* background-color: yellow; */
     cursor: pointer;
+}
+
+/* Activated Class */
+.search_return_btn.activated, .search_bar.activated {
+    display: flex;
+}
+
+#search_btn.activated {
+    opacity: 0%;
+}
+
+.hamburger_button.activated {
+    display: none;
 }
 
 .search_return_btn img {
@@ -231,14 +244,19 @@ nav {
     border: none;
 }
 
+.search_bar input::placeholder {
+    font-size: 1rem;
+}
+
+.search_bar input:focus-visible, .search_bar input:focus {
+    border: none;
+    outline: none;
+}
+
 .search_bar #search_submit {
     width: 40px;
     border: none;
     background: none;
-}
-
-.search_bar #search_submit:focus {
-    border: 2px solid blue;
 }
 
 .search_bar #search_submit img {
