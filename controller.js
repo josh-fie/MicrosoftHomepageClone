@@ -449,9 +449,10 @@ moreButton.addEventListener('click', function(e) {
 });
 
 // Slider Component
-//Building a Slider Component Parts 1 and 2
+
 const slider = function () {
     //contains all sliders JS and doesn't pollute global namespace.
+    const slider =document.querySelector(".slider");
     const slides = document.querySelectorAll('.slide');
     const btnLeft = document.querySelector('.slider__btn--left');
     const btnRight = document.querySelector('.slider__btn--right');
@@ -484,14 +485,12 @@ const slider = function () {
         .querySelector(`.dots__dot[data-slide="${slide}"]`) //finds the dot with dots dot class and dataslide # attribute using bracket notation.
         .classList.add('dots__dot--active');
     };
-  
-    const goToSlide = function (slide) {
-      slides.forEach(
-        (s, i) => (s.style.transform = `translateX(${100 * (i - slide)}%)`)
-      );
+
+    const changeSlide = function () {
+      slider.classList.toggle("reverse");
     };
   
-    //Next slide
+//     //Next slide
     const nextSlide = function () {
       if (curSlide === maxSlide - 1) {
         curSlide = 0;
@@ -499,48 +498,69 @@ const slider = function () {
         curSlide++;
       }
   
-      goToSlide(curSlide);
-      activateDot(curSlide);
+    changeSlide();
+    activateDot(curSlide);
     };
-  
+
     const prevSlide = function () {
       if (curSlide === 0) {
         curSlide = maxSlide - 1;
       } else {
         curSlide--;
       }
-      goToSlide(curSlide);
-      activateDot(curSlide);
+
+    changeSlide();
+    activateDot(curSlide);
     };
+
+    // Change Play Status
+
+    let intervalId;
+    const changePlayStatus = function() {
+        console.log(btnPlay.classList);
+
+        if(btnPlay.classList.contains("pause")) {
+            console.log("playing")
+            btnPlay.firstElementChild.src = "/images/pause-button.png";
+            btnPlay.classList.remove("pause");
+            btnPlay.classList.add("playing");
+
+            intervalId = setInterval(function() {
+                nextSlide();
+            }, 5000);
+
+            console.log(intervalId);
+
+        } else {
+            console.log("paused")
+            btnPlay.firstElementChild.src = "/images/play-button_2.png";
+            btnPlay.classList.remove("playing");
+            btnPlay.classList.add("pause");
+
+            //clear interval if paused
+            clearInterval(intervalId);
+            intervalId = null;
+        }
+    }
+
   
     //Init Function (initialise function calls for above)
     const init = function () {
       createDots();
-      goToSlide(0);
       activateDot(0);
     };
     init();
   
-//     //Event Listeners
+    //Event Listeners
   
     btnRight.addEventListener('click', nextSlide);
     btnLeft.addEventListener('click', prevSlide);
-  
-    document.addEventListener('keydown', function (e) {
-      console.log(e);
-      if (e.key === 'ArrowLeft') prevSlide();
-      e.key === 'ArrowRight' && nextSlide(); //short circuting applied here
-    });
-  
-//     dotContainer.addEventListener('click', function (e) {
-//       if (e.target.classList.contains('dots__dot')) {
-//         const { slide } = e.target.dataset; //deconstruct object into slide variable.
-//         goToSlide(slide);
-//         activateDot(slide);
-//       }
-//     });
-  };
-  slider();
+    btnPlay.addEventListener('click', changePlayStatus);
+
+    console.log(btnPlay);
+
+};
+slider();
 
 
 
