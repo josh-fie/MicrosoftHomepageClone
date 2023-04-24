@@ -189,15 +189,12 @@ nav {
 
 .container:nth-of-type(1) {
     width: 95%;
-    /* max-width: 1084px; */
     margin: 0 auto;
     padding: 0;
 }
 
 .container:nth-of-type(2) {
-    background-repeat: no-repeat;
-    /* background-image: url(/images/showcase_xlarge.png); */
-    background-size: 100%;
+    width: 100%;
 }
 
 .hamburger_button {
@@ -471,7 +468,7 @@ nav .more_div div {
     flex-direction: row-reverse;
 }
 
-.slide {
+.slide, .showcase-two, .showcase-three {
     width: 100%;
     position: relative;
     /* position: absolute; */
@@ -479,26 +476,31 @@ nav .more_div div {
     /* padding: 120px 0 0 75px; */
 }
 
-.slide img {
+.slide img, .showcase-two img, .showcase-three img {
     width: 100%;
 }
 
-.slide > div {
-    width: 40%;
+.slide > div, .showcase-two > div, .showcase-three > div {
+    width: 30%;
     display: flex;
     flex-direction: column;
     position: absolute;
-    /* top: 120px; */
-    top: 28%;
-    left: 75px;
-}
+    top: 32%;
+    left: 115px;
+};
 
-/* .slide:nth-of-type(1) {
-    display: none;
-}
-.slide:nth-of-type(2) {
-    display: block;
-} */
+/* Below not taking effect due to order in Css??? */
+
+/* #showcase-internaldiv {
+    width: 37.5%;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 50px;
+    position: absolute;
+    top: 28%;
+    left: 55px;
+}; */
 
 .slide:nth-of-type(2) > div{
     width: 30%;
@@ -741,30 +743,6 @@ background-color: black;
 
 /* Showcase 2 & Showcase 3 */
 
-.showcase-two {
-    width: 100%;
-    height: 425px;
-    background-image: url(/images/controllers.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding: 120px 0 0 75px;
-    margin-bottom: 50px;
-}
-
-.showcase-three {
-    width: 100%;
-    height: 425px;
-    background-image: url(/images/showcase3_large.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding: 120px 0 0 75px;
-    margin-bottom: 50px;
-}
-
-.showcase-two h2, .showcase-two p, .showcase-two div, .showcase-three h2, .showcase-three p, .showcase-three div {
-    width: 40%;
-}
-
 .showcase-two h2, .showcase-three h2 {
     margin-bottom: 10px;
     font-weight: 500;
@@ -912,6 +890,13 @@ footer .language-copyright ul a:first-child li {
 /*Media Queries*/
 
 @media (min-width: 1084px) {
+
+    .container {
+        width: 90%;
+        margin: 0 auto;
+        padding: 0;
+    }
+
     .container:nth-of-type(1) {
         width: 90%;
         margin: 0 auto;
@@ -924,6 +909,35 @@ footer .language-copyright ul a:first-child li {
 
 }
 
+@media (min-width: 900px) and (max-width: 1083px) {
+
+    .slide > div, .showcase-two > div, .showcase-three > div {
+        width: 97.5%;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        box-shadow: 0px 0px 0.5px 1px rgb(0 0 0 / 20%);
+        background-color: white;
+        margin: 0 auto;
+        /* top: 300px; */
+        top: -50px;
+        padding: 50px;
+        left: 0px;
+    }
+
+    .slide:nth-of-type(2) > div {
+        width: 97.5%;
+        left: 0px;
+    }
+
+    .container {
+        width: 97.5%;
+        margin: 0 auto;
+        padding: 0;
+    }
+
+}
+
 @media (max-width: 1000px) {
 
     .image-cards {
@@ -932,22 +946,6 @@ footer .language-copyright ul a:first-child li {
         width: 100%;
         grid-gap: 25px;
         margin-bottom: 30px;
-    }
-
-    .showcase-two {
-        width: 100%;
-        height: 525px;
-        background-image: url(/images/controllers.jpg);
-        background-repeat: no-repeat;
-        background-size: auto;
-        padding: 120px 0 0 75px;
-        margin-bottom: 50px;
-    }
-
-    .container:nth-of-type(5) {
-        width: 100%;
-        margin: 0 auto;
-        padding: 0;
     }
 
     footer .sitemap {
@@ -993,6 +991,16 @@ footer .language-copyright ul a:first-child li {
     .all_micro_content {
         right: -150px;
     }
+}
+
+@media (min-width: 540px) and (max-width: 900px) {
+
+    .container {
+        width: 97%;
+        margin: 0 auto;
+        padding: 0;
+    }
+
 }
 
 @media (max-width: 900px) {
@@ -1113,9 +1121,9 @@ footer .language-copyright ul a:first-child li {
         width: 100%;
         align-items: flex-start;
         background-color:rgba(240, 240, 240);
-        /* border: 1px solid rgba(225, 225, 225, 0.8); */
         border-bottom: 2px solid black;
         font-size: 1rem;
+        z-index: 5;
     }
 
     nav ul li, .main-nav div {
@@ -1221,11 +1229,62 @@ footer .language-copyright ul a:first-child li {
     .search_bar input::placeholder {
         font-size: 1rem;
     }
+
+    /* Slideshow */
+    .slide > div, .showcase-two > div, .showcase-three > div {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        box-shadow: 0px 0.5px 1px 0px rgb(0 0 0 / 20%);
+        background-color: white;
+        margin: 0 auto;
+        top: -3px;
+        padding: 25px;
+        left: 0px;
+    }
+
+    .showcase-two > div, .showcase-three > div {
+        box-shadow: none;
+        padding: 15px;
+    }
+
+    .slide:nth-of-type(2) > div {
+        width: 100%;
+        left: 0px;
+    }
 }
 
-@media (max-width: 540px) {
-    /* Showcase Images Resize */
-    .showcase-three {
-        background-image: url(/images/showcase3_small.jpg);
+@media (max-width: 539px) {
+
+    .container {
+        width: 95%;
+        margin: 0 auto;
+        padding: 0;
     }
+
+    /* Slideshow */
+    .slide > div, .showcase-two > div, .showcase-three > div {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        box-shadow: 0px 0.5px 1px 0px rgb(0 0 0 / 20%);
+        background-color: white;
+        margin: 0 auto;
+        top: -3px;
+        padding: 25px;
+        left: 0px;
+    }
+
+    .showcase-two > div, .showcase-three > div {
+        box-shadow: none;
+        padding: 15px;
+    }
+
+    .slide:nth-of-type(2) > div {
+        width: 100%;
+        left: 0px;
+    }
+    
 }

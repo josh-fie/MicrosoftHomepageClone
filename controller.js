@@ -34,6 +34,11 @@ const searchReturnBtn = document.querySelector(".search_return_btn");
 const searchBar = document.querySelector(".search_bar");
 const searchInput = document.getElementById("search_input");
 
+// Slideshow
+const slider = document.querySelector(".slider");
+const slides = document.querySelectorAll('.slide');
+const showcaseTwo = document.querySelector(".showcase-two");
+const showcaseThree = document.querySelector(".showcase-three");
 
 
 // Reusable Functions
@@ -180,17 +185,70 @@ mainNav.addEventListener('click', function(e) {
     } else return;
 })
 
+// Window Resize - Image Changes
+const mmObj1399 = window.matchMedia("(min-width: 1084px)");
+const mmObj1083 = window.matchMedia("(min-width: 900px) and (max-width: 1083px)");
+const mmObjmin540 = window.matchMedia("(min-width: 540px) and (max-width: 900px)");
+const mmObj539 = window.matchMedia("(max-width: 539px)");
+
 // Window Resize to Tablet (<880px)
 
-const mmObj = window.matchMedia("(max-width: 900px)");
+const mmObj900 = window.matchMedia("(max-width: 900px)");
 
-// Create a match Function
+// Matching Functions
+
+function xlargeDomChange(x) {
+    // Change to Largest Images
+    if(x.matches) {
+        // Slide Images X Large
+        slides[0].firstElementChild.src = "/images/showcase_xlarge.png";
+        slides[1].firstElementChild.src = "/images/microsoft365_xlarge.jpg";
+
+        slides.forEach (slide => console.log(slide.firstElementChild.attributes[0].textContent))
+
+        // Showcases Images X Large
+        showcaseTwo.firstElementChild.src = "/images/controllers_xlarge.png";
+        showcaseThree.firstElementChild.src = "/images/showcase3_xlarge.jpg";
+
+        console.log(showcaseTwo.firstElementChild.attributes[0].textContent, showcaseThree.firstElementChild.attributes[0].textContent);
+    }
+};
+
+function largeDomChange(x) {
+    // Change to Largest Images
+    if(x.matches) {
+        // Slide Images Large
+        slides[0].firstElementChild.src = "/images/showcase_large.png";
+        slides[1].firstElementChild.src = "/images/microsoft365_large.jpg";
+
+        slides.forEach (slide => console.log(slide.firstElementChild.attributes[0].textContent))
+
+        // Showcases Images Large
+        showcaseTwo.firstElementChild.src = "/images/controllers_large.png";
+        showcaseThree.firstElementChild.src = "/images/showcase3_large.jpg";
+
+        console.log(showcaseTwo.firstElementChild.attributes[0].textContent, showcaseThree.firstElementChild.attributes[0].textContent);
+    }
+};
+
 function tabletDomChange(x) {
 
     // Change SearchReturnButton From Cancel to Arrow
     if (x.matches) {
         searchReturnBtn.querySelector("img").style.display = "block";
         searchReturnBtn.querySelector("span").style.display = "none";
+
+        // Slide Images Medium
+        slides[0].firstElementChild.src = "/images/showcase_medium.png";
+        slides[1].firstElementChild.src = "/images/microsoft365_medium.jpg";
+
+        slides.forEach (slide => console.log(slide.firstElementChild.attributes[0].textContent))
+
+        // Showcases Images Medium
+        showcaseTwo.firstElementChild.src = "/images/controllers_medium.png";
+        showcaseThree.firstElementChild.src = "/images/showcase3_medium.jpg";
+
+        console.log(showcaseTwo.firstElementChild.attributes[0].textContent, showcaseThree.firstElementChild.attributes[0].textContent);
     } else {
         searchReturnBtn.querySelector("span").style.display = "inline-block";
         searchReturnBtn.querySelector("img").style.display = "none";
@@ -250,15 +308,62 @@ function tabletDomChange(x) {
     }
 }
 
-// Initial Call on Tablet Size width Check:
-tabletDomChange(mmObj);
+function mediumDomChange(x) {
+    // Change to Largest Images
+    if(x.matches) {
+        // Slide Images Medium
+        slides[0].firstElementChild.src = "/images/showcase_medium.png";
+        slides[1].firstElementChild.src = "/images/microsoft365_medium.jpg";
 
-// Event Listener for Window Width Change (Changes applied at Tablet Width)
-mmObj.addEventListener("change", tabletDomChange);
+        slides.forEach (slide => console.log(slide.firstElementChild.attributes[0].textContent))
+
+        // Showcases Images Medium
+        showcaseTwo.firstElementChild.src = "/images/controllers_medium.png";
+        showcaseThree.firstElementChild.src = "/images/showcase3_medium.jpg";
+
+        console.log(showcaseTwo.firstElementChild.attributes[0].textContent, showcaseThree.firstElementChild.attributes[0].textContent);
+    }
+};
+
+function smallDomChange(x) {
+    // Change to Largest Images
+    if(x.matches) {
+        // Slide Images Small
+        slides[0].firstElementChild.src = "/images/showcase_small.png";
+        slides[1].firstElementChild.src = "/images/microsoft365_small.jpg";
+
+        slides.forEach (slide => console.log(slide.firstElementChild.attributes[0].textContent))
+
+        // Showcases Images Small
+        showcaseTwo.firstElementChild.src = "/images/controllers_small.jpg";
+        showcaseThree.firstElementChild.src = "/images/showcase3_small.jpg";
+
+        console.log(showcaseTwo.firstElementChild.attributes[0].textContent, showcaseThree.firstElementChild.attributes[0].textContent);
+    }
+};
+
+// Initial Call on Size width Check:
+xlargeDomChange(mmObj1399);
+largeDomChange(mmObj1083);
+tabletDomChange(mmObj900);
+mediumDomChange(mmObjmin540);
+smallDomChange(mmObj539);
+
+// Event Listener for Window Width Change
+mmObj1399.addEventListener("change", xlargeDomChange);
+mmObj1083.addEventListener("change", largeDomChange);
+mmObj900.addEventListener("change", tabletDomChange);
+mmObjmin540.addEventListener("change", mediumDomChange);
+mmObj539.addEventListener("change", smallDomChange);
+
+
+
+
+
+
+
 
 // Display Cookies Banner
-
-// Async Promise addition???
 
 window.addEventListener('load', displayBanner(cookiesBanner));
 
@@ -450,10 +555,8 @@ moreButton.addEventListener('click', function(e) {
 
 // Slider Component
 
-const slider = function () {
-    //contains all sliders JS and doesn't pollute global namespace.
-    const slider =document.querySelector(".slider");
-    const slides = document.querySelectorAll('.slide');
+const sliderBlock = function () {
+    //contains all sliders JS and doesn't pollute global namespace other than slider and slides for image changes.
     const btnLeft = document.querySelector('.slider__btn--left');
     const btnRight = document.querySelector('.slider__btn--right');
     const btnPlay = document.querySelector('.slider__btn--play');
@@ -560,7 +663,7 @@ const slider = function () {
     console.log(btnPlay);
 
 };
-slider();
+sliderBlock();
 
 
 
