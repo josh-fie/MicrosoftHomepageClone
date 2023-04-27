@@ -18,6 +18,10 @@ const cookiesInputs = document.querySelector(".cookies-inputs");
 // All Microsoft Dropdown
 const allMicrosoft = document.querySelector("#all_microsoft");
 
+// View Sitemap
+const SitemapBtn = document.querySelector(".go-to-sitemap");
+const sitemap = document.querySelector(".sitemap");
+
 // More Dropdown
 const moreButton = document.querySelector("#more_dropdown");
 
@@ -287,8 +291,12 @@ function tabletDomChange(x) {
         // Generate View Sitemap Line in Dropdown
         
         const smLiElement = document.createElement("li");
+
+        // Add Event Listener to Sitemap li
+        smLiElement.addEventListener('click', function() {sitemap.scrollIntoView(true, {behavior: 'smooth'})});
+
         const aElement = document.createElement("a");
-        aElement.href = "#";
+        aElement.href = "#sitemap_";
         const textElement = document.createTextNode("View Sitemap");
         aElement.append(textElement);
         smLiElement.append(aElement);
@@ -465,11 +473,16 @@ allMicrosoft.addEventListener('click', (e) => {
 
     setTimeout(() => {
         dropdownMenu.style.display = "block";
-        // dropdownMenu.style.opacity = 1;
-        // dropdownMenu.style.top = "50px";
     }, 100);
     }
 });
+
+// View Sitemap Listener
+
+SitemapBtn.addEventListener('click', function(e) {
+    
+    sitemap.scrollIntoView(true, {behavior: 'smooth'});
+})
 
 // Remove Search Bar Focus on Tab Keypress
 
@@ -673,12 +686,21 @@ const unrevealBackToTop = function (ent, observer) {
   const [entry] = ent;
 
   if (!entry.isIntersecting) {
-    backToTopButton.classList.remove('faded')
+    backToTopButton.style.display = "flex";
+    
+    setTimeout(function() {
+    console.log("btn visible");
+    backToTopButton.classList.remove('faded');
     backToTopButton.classList.add('clear');
+  }, 200);
     return;
 }
 
   backToTopButton.classList.add('faded');
+  setTimeout(function() {
+    console.log("btn hidden");
+    backToTopButton.style.display = "none";
+  }, 200);
 };
 
 const sectionObserver = new IntersectionObserver(unrevealBackToTop, {
