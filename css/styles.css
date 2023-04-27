@@ -803,9 +803,52 @@ background-color: black;
 .socialarea .social-icon {
     width: 28px;
     margin: 0 9px;
-    /* filter: grayscale(); */
-    /* filter: invert(); */
 }
+
+/* Back to Top Button */
+    .container:nth-of-type(10) {
+        position: sticky;
+        bottom: -50px;
+    }
+
+    .back-to-top {
+        display: flex;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        justify-content: center;
+        align-items: center;
+        width: 140px;
+        padding: .625rem .75rem;
+        border-radius: .125rem;
+        background-color: lightgrey;
+        border: none;
+        font-weight: 600;
+        font-size: 1rem;
+        margin-bottom: 60px;
+    }
+
+    .back-to-top.clear {
+        transition: opacity .5s;
+        opacity: 100%
+    }
+
+    .back-to-top.faded {
+        transition: opacity .5s;
+        opacity: 0%
+    
+    }
+
+    .back-to-top:hover {
+        cursor: pointer;
+        box-shadow: -.5px 4px 7px 2px rgba(0, 0, 0, .2), inset 50px 50px 10px 10px rgb(255, 255, 255);
+    }
+
+    .back-to-top > img {
+        width: 14px;
+        transform: rotate(90deg);
+        margin-right: .5rem;
+    }
 
 /* Sitemap Footer */
 
@@ -815,7 +858,7 @@ footer {
     width: 100%;
 }
 
-footer .body-container, .container:nth-of-type(1) {
+footer .container:nth-of-type(1) {
     width: unset;
     padding: 0 12px;
 }
@@ -886,23 +929,78 @@ footer .sitemap {
 
 footer .language-copyright ul {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     list-style-type: none;
+    width: 100%;
 }
 
-footer .language-copyright ul a:first-of-type li::before {
+footer .language-copyright > a:first-of-type li::before {
     content: url(/images/globe.svg) '';
     display: inline-block;
     vertical-align: middle;
     padding-right: 8px;
 }
+footer .language-copyright {
+    display: flex;
+    /* justify-content: space-between; */
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
 
-footer .language-copyright ul a:first-child li {
-    padding-right: 5px;
+footer .language-copyright a:first-child li {
+    /* padding-right: 5px; */
+    list-style-type: none;
+}
+
+footer .language-copyright > a:first-child {
+    flex-basis: 225px;
 }
 
 /*Media Queries*/
+
+@media (max-width: 1275px) {
+    footer .language-copyright {
+        display: block;
+        padding: 0 12px;
+    }
+
+    footer .language-copyright > a:first-child {
+        display: block;
+        flex-basis: 225px;
+        align-self: flex-start;
+        /* height: 1rem; */
+    }
+
+    footer .language-copyright ul {
+        padding-bottom: 20px;
+    }
+
+    footer .language-copyright ul > li {
+        padding: 0px 16px 0px 0;
+        margin-top: 8px;
+    }
+
+    footer .language-copyright a {
+        font-size: 11px;
+        padding: 0px 16px 0px 0;
+        margin-top: 8px;
+        color: inherit;
+        text-decoration: none;
+        line-height: 16px;
+    }
+
+    footer .language-copyright > a {
+        font-size: 11px;
+        padding: 0px 0 0px 0;
+        margin-top: 32px;
+        color: inherit;
+        text-decoration: none;
+        line-height: 16px;
+    }
+}
 
 @media (min-width: 1084px) and (max-width: 1179px) {
     .slide > div {
@@ -986,7 +1084,7 @@ footer .language-copyright ul a:first-child li {
         padding: 28px 0px 0px 0px;
     }
 
-    footer .body-container, .container:nth-of-type(1) {
+    footer .container:nth-of-type(1) {
         width: unset;
         padding: 0 5%;
     }
@@ -1046,7 +1144,7 @@ footer .language-copyright ul a:first-child li {
         margin-top: unset;
     }
 
-    footer .body-container, .container:nth-of-type(1) {
+    footer .container:nth-of-type(1) {
         width: unset;
         padding: 0 12px;
     }
@@ -1108,7 +1206,7 @@ footer .language-copyright ul a:first-child li {
         padding: 0;
     }
 
-    footer .body-container, .container:nth-of-type(1) {
+    footer .container:nth-of-type(1) {
         width: unset;
         padding: 0 12px;
     }
@@ -1375,9 +1473,37 @@ footer .language-copyright ul a:first-child li {
     margin-top: unset;
     }
 
-    footer .body-container, .container:nth-of-type(1) {
+    footer .container:nth-of-type(1) {
         width: unset;
         padding: 0 12px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    footer .language-copyright ul {
+        padding-bottom: 16px;
+        padding-top: 16px;
+    }
+
+    footer .language-copyright ul > li {
+        padding: 0px 6px 0px 0;
+        margin-top: 8px;
+    }
+
+    footer .language-copyright a {
+        font-size: 11px;
+        padding: 0px 6px 0px 6px;
+        margin-top: 4px;
+        color: inherit;
+        text-decoration: none;
+        line-height: 16px;
+    }
+
+    footer .language-copyright > a:first-child {
+        display: block;
+        flex-basis: 225px;
+        align-self: flex-start;
+        margin-top: 32px;
     }
 }
 
@@ -1426,13 +1552,49 @@ footer .language-copyright ul a:first-child li {
 
     .container .socialarea {
         margin-top: unset;
+        margin-bottom: 15px;
     }
+
+    /* Back to Top Button */
+
+    .container:nth-of-type(10) {
+        position: unset;
+        bottom: unset;
+    }
+
+    .back-to-top {
+        display: flex;
+        position: unset;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding: .625rem .75rem;
+        border-radius: .125rem;
+        background-color: lightgrey;
+        border: none;
+        font-weight: 600;
+        font-size: 1rem;
+        margin-bottom: 60px;
+    }
+
+    .back-to-top:hover {
+        cursor: pointer;
+        box-shadow: -.5px 4px 7px 2px rgba(0, 0, 0, .2), inset 50px 50px 10px 10px rgb(255, 255, 255);
+    }
+
+    .back-to-top > img {
+        width: 14px;
+        transform: rotate(90deg);
+        margin-right: .5rem;
+    }
+
+    /* Footer */
 
     footer .sitemap {
         grid-template-columns: repeat(1, 1fr);
     }
 
-    footer .body-container, .container:nth-of-type(1) {
+    footer .container:nth-of-type(1) {
         width: unset;
         padding: 0 12px;
     }

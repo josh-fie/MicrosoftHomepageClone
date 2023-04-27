@@ -665,6 +665,30 @@ const sliderBlock = function () {
 };
 sliderBlock();
 
+//Reveal/Unreveal Sticky Back to Top Container on Scroll
+const backToTopButton = document.querySelector('.back-to-top');
+// Makes use of slider container and root margin
+
+const unrevealBackToTop = function (ent, observer) {
+  const [entry] = ent;
+
+  if (!entry.isIntersecting) {
+    backToTopButton.classList.remove('faded')
+    backToTopButton.classList.add('clear');
+    return;
+}
+
+  backToTopButton.classList.add('faded');
+};
+
+const sectionObserver = new IntersectionObserver(unrevealBackToTop, {
+  root: null,
+  threshold: 0,
+});
+
+
+  sectionObserver.observe(slider);
+
 
 
 
