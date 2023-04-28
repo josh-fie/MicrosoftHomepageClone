@@ -156,12 +156,12 @@ function xlargeDomChange(x) {
     // Change to Largest Images
     if (x.matches) {
         // Slide Images X Large
-        slides[0].firstElementChild.src = "/images/showcase_xlarge.png";
-        slides[1].firstElementChild.src = "/images/microsoft365_xlarge.jpg";
+        slides[0].firstElementChild.src = "showcase_xlarge.png";
+        slides[1].firstElementChild.src = "microsoft365_xlarge.jpg";
         slides.forEach((slide)=>console.log(slide.firstElementChild.attributes[0].textContent));
         // Showcases Images X Large
-        showcaseTwo.firstElementChild.src = "/images/controllers_xlarge.png";
-        showcaseThree.firstElementChild.src = "/images/showcase3_xlarge.jpg";
+        showcaseTwo.firstElementChild.src = "controllers_xlarge.png";
+        showcaseThree.firstElementChild.src = "showcase3_xlarge.jpg";
         console.log(showcaseTwo.firstElementChild.attributes[0].textContent, showcaseThree.firstElementChild.attributes[0].textContent);
     }
 }
@@ -169,12 +169,12 @@ function largeDomChange(x) {
     // Change to Largest Images
     if (x.matches) {
         // Slide Images Large
-        slides[0].firstElementChild.src = "/images/showcase_large.png";
-        slides[1].firstElementChild.src = "/images/microsoft365_large.jpg";
+        slides[0].firstElementChild.src = "showcase_large.png";
+        slides[1].firstElementChild.src = "microsoft365_large.jpg";
         slides.forEach((slide)=>console.log(slide.firstElementChild.attributes[0].textContent));
         // Showcases Images Large
-        showcaseTwo.firstElementChild.src = "/images/controllers_large.png";
-        showcaseThree.firstElementChild.src = "/images/showcase3_large.jpg";
+        showcaseTwo.firstElementChild.src = "controllers_large.png";
+        showcaseThree.firstElementChild.src = "showcase3_large.jpg";
         console.log(showcaseTwo.firstElementChild.attributes[0].textContent, showcaseThree.firstElementChild.attributes[0].textContent);
     }
 }
@@ -184,12 +184,12 @@ function tabletDomChange(x) {
         searchReturnBtn.querySelector("img").style.display = "block";
         searchReturnBtn.querySelector("span").style.display = "none";
         // Slide Images Medium
-        slides[0].firstElementChild.src = "/images/showcase_medium.png";
-        slides[1].firstElementChild.src = "/images/microsoft365_medium.jpg";
+        slides[0].firstElementChild.src = "showcase_medium.png";
+        slides[1].firstElementChild.src = "microsoft365_medium.jpg";
         slides.forEach((slide)=>console.log(slide.firstElementChild.attributes[0].textContent));
         // Showcases Images Medium
-        showcaseTwo.firstElementChild.src = "/images/controllers_medium.png";
-        showcaseThree.firstElementChild.src = "/images/showcase3_medium.jpg";
+        showcaseTwo.firstElementChild.src = "controllers_medium.png";
+        showcaseThree.firstElementChild.src = "showcase3_medium.jpg";
         console.log(showcaseTwo.firstElementChild.attributes[0].textContent, showcaseThree.firstElementChild.attributes[0].textContent);
     } else {
         searchReturnBtn.querySelector("span").style.display = "inline-block";
@@ -208,7 +208,7 @@ function tabletDomChange(x) {
                     divElement.classList.add(`inner-div-${i}`);
                     const textElement = document.createTextNode(`${el.textContent}`);
                     const imgElement = document.createElement("img");
-                    imgElement.src = "/images/left-arrow.svg";
+                    imgElement.src = "left-arrow.svg";
                     widerDivElement.append(textElement);
                     widerDivElement.append(imgElement);
                     widerDivElement.append(divElement);
@@ -250,12 +250,12 @@ function mediumDomChange(x) {
     // Change to Largest Images
     if (x.matches) {
         // Slide Images Medium
-        slides[0].firstElementChild.src = "/images/showcase_medium.png";
-        slides[1].firstElementChild.src = "/images/microsoft365_medium.jpg";
+        slides[0].firstElementChild.src = "showcase_medium.png";
+        slides[1].firstElementChild.src = "microsoft365_medium.jpg";
         slides.forEach((slide)=>console.log(slide.firstElementChild.attributes[0].textContent));
         // Showcases Images Medium
-        showcaseTwo.firstElementChild.src = "/images/controllers_medium.png";
-        showcaseThree.firstElementChild.src = "/images/showcase3_medium.jpg";
+        showcaseTwo.firstElementChild.src = "controllers_medium.png";
+        showcaseThree.firstElementChild.src = "showcase3_medium.jpg";
         console.log(showcaseTwo.firstElementChild.attributes[0].textContent, showcaseThree.firstElementChild.attributes[0].textContent);
     }
 }
@@ -263,12 +263,12 @@ function smallDomChange(x) {
     // Change to Largest Images
     if (x.matches) {
         // Slide Images Small
-        slides[0].firstElementChild.src = "/images/showcase_small.png";
-        slides[1].firstElementChild.src = "/images/microsoft365_small.jpg";
+        slides[0].firstElementChild.src = "showcase_small.png";
+        slides[1].firstElementChild.src = "microsoft365_small.jpg";
         slides.forEach((slide)=>console.log(slide.firstElementChild.attributes[0].textContent));
         // Showcases Images Small
-        showcaseTwo.firstElementChild.src = "/images/controllers_small.jpg";
-        showcaseThree.firstElementChild.src = "/images/showcase3_small.jpg";
+        showcaseTwo.firstElementChild.src = "controllers_small.jpg";
+        showcaseThree.firstElementChild.src = "showcase3_small.jpg";
         console.log(showcaseTwo.firstElementChild.attributes[0].textContent, showcaseThree.firstElementChild.attributes[0].textContent);
     }
 }
@@ -343,11 +343,12 @@ allMicrosoft.addEventListener("click", (e)=>{
         ...button.classList
     ].includes("clicked")) closeDropdown(dropdownMenu, button);
     else {
-        button.classList.add("clicked");
+        // button.classList.add("clicked");
         // Display Dropdown Menu w/ transition
         setTimeout(()=>{
+            button.classList.add("clicked");
             dropdownMenu.style.display = "block";
-        }, 100);
+        }, 0);
     }
 });
 // View Sitemap Listener
@@ -460,7 +461,7 @@ const sliderBlock = function() {
         console.log(btnPlay.classList);
         if (btnPlay.classList.contains("pause")) {
             console.log("playing");
-            btnPlay.firstElementChild.src = "/images/pause-button.png";
+            btnPlay.firstElementChild.src = "pause-button.png";
             btnPlay.classList.remove("pause");
             btnPlay.classList.add("playing");
             intervalId = setInterval(function() {
@@ -469,7 +470,7 @@ const sliderBlock = function() {
             console.log(intervalId);
         } else {
             console.log("paused");
-            btnPlay.firstElementChild.src = "/images/play-button_2.png";
+            btnPlay.firstElementChild.src = "play-button_2.png";
             btnPlay.classList.remove("playing");
             btnPlay.classList.add("pause");
             //clear interval if paused

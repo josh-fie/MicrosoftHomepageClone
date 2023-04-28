@@ -572,7 +572,7 @@ nav .more_div div {
   width: 100%;
 }
 
-.slider__btn.slider__btn--play img[src="/images/pause-button.png"], .slider__btn.slider__btn--play:hover img {
+.slider__btn.slider__btn--play img[src="pause-button.png"], .slider__btn.slider__btn--play:hover img {
   filter: invert();
 }
 
