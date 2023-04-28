@@ -56,7 +56,7 @@ const displayBanner = function(el) {
     setTimeout(() => {
         el.style.display = "block";
         console.log("Cookies Banner Displayed")
-    }, 5000);
+    }, 3000);
 }
 
 const checkCookieInputs = function() {
